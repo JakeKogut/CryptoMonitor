@@ -3,4 +3,5 @@
     <string name="lastUpdated">Last Updated</string>
     <string name="Currency">Currency</string>
     <string name="value">Value</string>
+    <string name="search">Search</string>
 </resources>
