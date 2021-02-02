@@ -19,6 +19,18 @@
         app:layout_constraintVertical_bias="0.174" />
 
     <TextView
+        android:id="@+id/mDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lastUpdated"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <TextView
         android:id="@+id/mCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/rdoGroup"
         android:layout_width="178dp"
         android:layout_height="148dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,18 +69,18 @@
             android:id="@+id/rBTC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bitcoin" />
+            android:text="@string/Bitcoin" />
 
         <RadioButton
             android:id="@+id/rUSDT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="USDT" />
+            android:text="@string/USDT" />
 
         <RadioButton
             android:id="@+id/rETH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ethereum" />
+            android:text="@string/Ethereum" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,7 @@
     <string name="Currency">Currency</string>
     <string name="value">Value</string>
     <string name="search">Search</string>
+    <string name="USDT">USDT</string>
+    <string name="Bitcoin">Bitcoin</string>
+    <string name="Ethereum">Ethereum</string>
 </resources>
