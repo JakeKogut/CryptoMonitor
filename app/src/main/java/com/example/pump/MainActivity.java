@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     String value = "USDT";
     private RadioGroup rdoGroup;
     private RadioButton radioButton;
+    private Button btnRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mCurrency=findViewById(R.id.mCurrency);
         mValue=findViewById(R.id.mValue);
         rdoGroup = findViewById(R.id.rdoGroup);
+        btnRefresh = findViewById(R.id.btnRefresh);
 
         rdoGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -74,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+            }
+        });
+
 
     }
 
@@ -90,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 coin=query;
-                mCurrency.setText(coin);
+
                 update();
 
                 InputMethodManager inputMethodManager=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -113,13 +124,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void update(){
         String url="https://api.binance.com/api/v3/ticker/price?symbol="+coin+value;
+        mCurrency.setText(coin+" to "+value);
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                 //   JSONObject main_object=response.getJSONObject("price");
-                 //   Log.d("Tag","resultat = "+main_object.toString());
-
                     double valueC = response.getDouble("price");
                     String value=String.valueOf(valueC);
                     Log.d("Tag","resultat = "+value);
@@ -135,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     mDate.setText(currentDateTimeString);
 
                 } catch (JSONException e) {
+
                     e.printStackTrace();
                 }
 
@@ -142,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                mCurrency.setText("This conversion does not exist");
             }
         });
         RequestQueue queue= Volley.newRequestQueue(this);

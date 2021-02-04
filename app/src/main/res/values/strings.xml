@@ -7,4 +7,5 @@
     <string name="USDT">USDT</string>
     <string name="Bitcoin">Bitcoin</string>
     <string name="Ethereum">Ethereum</string>
+    <string name="Refresh">Refresh</string>
 </resources>
