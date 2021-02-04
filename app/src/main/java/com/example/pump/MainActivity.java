@@ -55,12 +55,15 @@ public class MainActivity extends AppCompatActivity {
                 switch(radioButton.getId()){
                     case R.id.rBTC:
                         value="BTC";
+                        update();
                         break;
                     case R.id.rUSDT:
                         value="USDT";
+                        update();
                         break;
                     case R.id.rETH:
                         value="ETH";
+                        update();
                         break;
 
 
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 coin=query;
+                mCurrency.setText(coin);
                 update();
 
                 InputMethodManager inputMethodManager=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -121,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Tag","resultat = "+value);
                     mValue.setText(value);
 
-                    mCurrency.setText(coin);
 
 
 
